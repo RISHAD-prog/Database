@@ -1,0 +1,115 @@
+create table physician
+(
+ps_id number (3) constraint physician_ps_id_pk primary key,
+ps_name varchar2(20) not null,
+ps_phoneno number(11) unique,
+ps_experience number(5) constraint physician_ps_experience_ck check ((  ps_experience>=5)),
+p_id number (3) constraint physician_p_id_fk references player (p_id)
+)
+desc physician
+create table nutritionist
+(
+n_id number (3) constraint nutritionist_n_id_pk primary key,
+n_name varchar2(20) not null,
+n_phoneno number(11) unique,
+n_skill number(5) not null,
+p_id number (3) constraint nutritionist_p_id_fk references player (p_id)
+)
+desc nutritionist
+CREATE TABLE COACH
+       (C_ID NUMBER(20) CONSTRAINT PK_COACH PRIMARY KEY,
+	C_NAME VARCHAR2(20) NOT NULL,
+        C_SKILL VARCHAR2(20) NOT NULL,
+        P_ID number(3) constraint coach_p_id_fk references player (p_id)
+        )
+DESC COACH
+create table equipment
+(
+e_id number (4) constraint equipment_e_id_pk primary key,
+e_name varchar2(20) not null,
+e_type varchar2(20) not null,
+m_no number (4) constraint equipment_m_no_fk references match(m_no)
+)
+desc  equipment
+create table doctor
+(
+d_id number (20) constraint doctor_d_id_pk primary key,
+d_name varchar2(20) not null,
+d_phoneno number(11) unique ,
+d_skill varchar2(20) constraint doctor_d_id_ck check((d_skill>3)),
+p_id number (3) constraint doctor_p_id_fk references player (p_id)
+)
+
+desc  doctor
+CREATE TABLE match 
+(
+m_no NUMBER(4) CONSTRAINT  match_m_no_pk PRIMARY KEY,
+m_type  VARCHAR2(20) NOT NULL,
+m_time number(5) unique ,
+p_id number(3) constraint match_p_id_fk references player(p_id)
+)
+ desc match
+Create  Table player 
+(
+p_id number (3) constraint player_p_id_pk primary key, 
+p_name varchar2(20) not null,
+postal_code number(5) unique,
+p_age number(5) constraint player_p_age_ck check ((p_age>20))
+)
+
+desc player
+CREATE TABLE COUNTRY
+        ( POSTAL_CODE NUMBER(20) CONSTRAINT PK_COUNTRY PRIMARY KEY,
+        P_CITY VARCHAR2(20) NOT NULL, 
+        P_COUNTRY VARCHAR2(20) NOT NULL
+        )
+
+DESC COUNTRY
+
+
+insert into player values(player_p_id.nextval,'Rafique' ,1202,21)
+insert into player values(player_p_id.nextval,'Jabbar' ,1203,23)
+insert into player values(player_p_id.nextval,'Sawpnil' ,1211 ,27 )
+insert into player values(player_p_id.nextval,'Nodi' ,1220 , 28)
+insert into player values(player_p_id.nextval,'Mithila' ,1240 ,23 )
+insert into player values(player_p_id.nextval,'Rajon ' ,1230, 25)
+insert into player values(player_p_id.nextval,'Rejon' ,1225 ,29 )
+insert into player values(player_p_id.nextval,'Rumman' , 1215 ,32 )
+insert into player values(player_p_id.nextval,'Redoan' , 1204 , 24)
+insert into player values(player_p_id.nextval,'Maliha' ,1202 , 21 )
+
+select * from player
+delete from player
+
+create sequence player_p_id
+Increment by 1
+start with 11
+max value 20
+nocache
+nocycle
+
+insert into nutritionist values (nutritionist_n_id.nextval,'Zenia' ,01458631895,6,19)
+insert into nutritionist values (nutritionist_n_id.nextval,'sakib' ,1846668197,15,16)
+insert into nutritionist values (nutritionist_n_id.nextval,'mahmud' ,1946668197,10,14)
+insert into nutritionist values (nutritionist_n_id.nextval,'mahmud' ,1945668197,10,12)
+insert into nutritionist values (nutritionist_n_id.nextval,'mahmud' ,1948668197,10,11)
+insert into nutritionist values (nutritionist_n_id.nextval,'rony' ,1448668197,5,13)
+insert into nutritionist values (nutritionist_n_id.nextval,'rony' ,1448668195,5,15)
+insert into nutritionist values (nutritionist_n_id.nextval,'rony' ,1448638195,5,17)
+insert into nutritionist values (nutritionist_n_id.nextval,'sakib' ,1846668687,15,20)
+insert into nutritionist values (nutritionist_n_id.nextval,'sakib' ,1846668697,15,18)
+
+
+
+select * from nutritionist
+
+create sequence nutritionist_n_id
+Increment by 1
+start with 11
+max value 20
+nocache
+nocycle
+Aa
+
+
+
